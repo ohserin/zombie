@@ -6,12 +6,14 @@ public class Unit {
 	protected final int MAX_HP;
 	protected int hp;
 	protected int pos;
+	protected int attack;
 	protected Random ran;
 
-	protected Unit(int hp, int pos) {
+	protected Unit(int hp, int pos, int attack) {
 		MAX_HP = hp;
 		this.hp = hp;
 		this.pos = pos;
+		this.attack = attack;
 		this.ran = new Random();
 	}
 
