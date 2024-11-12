@@ -12,4 +12,4 @@
 
 
   #### Demo
-  ![데모생성]()
+  ![데모생성](resources/demo.gif)
