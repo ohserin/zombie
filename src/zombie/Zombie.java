@@ -16,9 +16,9 @@ public class Zombie extends Unit implements Attackable {
 
 		this.setHp(this.getHp() + attack / 2);
 
-		System.out.println(
-				"좀비가 " + attack + "의 공격력으로 공격 :" + " 현재 Hero hp : " + hero.getHp() + ",좀비 체력 회복 " + this.getHp());
-
+		String info = String.format("좀비가 %d 데미지를 입혔습니다. 현재 Hero hp : %d 좀비 체력 회복: %d", attack, hero.getHp(),
+				this.getHp());
+		System.out.println(info);
 	}
 
 }
