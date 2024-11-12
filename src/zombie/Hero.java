@@ -13,7 +13,7 @@ public class Hero extends Unit implements Attackable, Recoverable {
 
 		if (enemy instanceof Boss) {
 			Boss boss = (Boss) enemy;
-			attack = ran.nextInt(attack) + 1;
+			attack = ran.nextInt(attack) + 5;
 			if (boss.getShield() > 0) {
 				int excessDamage = boss.getShield() - attack;
 				if (excessDamage >= 0) {
@@ -34,14 +34,13 @@ public class Hero extends Unit implements Attackable, Recoverable {
 					boss.getShield());
 			System.out.println(info);
 		} else {
-			
 
-			attack = ran.nextInt(attack) + 1;
+			attack = ran.nextInt(attack) + 5;
 			enemy.setHp(enemy.getHp() - attack);
 			if (enemy.getHp() <= 0) {
 				enemy.setHp(0);
 			}
-			String info = String.format("Hero가 %d의 공격력으로 공격!! >>> 현재 Zombie hp : %d", attack,enemy.getHp());
+			String info = String.format("Hero가 %d의 공격력으로 공격!! >>> 현재 Zombie hp : %d", attack, enemy.getHp());
 			System.out.println(info);
 		}
 	}
@@ -49,10 +48,10 @@ public class Hero extends Unit implements Attackable, Recoverable {
 	public void recovery() {
 		if (count > 0) {
 			setHp(getHp() + 200);
-			System.out.println(String.format("hp가 %d로 상승하였습니다.", getHp()));
+			System.out.println(String.format("hp가 %d으로 상승하였습니다.", getHp()));
 			count -= 1;
 		} else {
-			System.out.println("모두 사용했습니다.");
+			System.out.println("포션을 모두 사용했습니다.");
 		}
 	}
 

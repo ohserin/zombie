@@ -27,7 +27,7 @@ public class ZombieGame {
 	private int pos = 1;
 
 	Hero hero = new Hero(220, 1, 10);
-	Boss boss = new Boss(300, 9, 10);
+	Boss boss = new Boss(300, 9, 20);
 	Zombie zombie = new Zombie(100, 4, 5);
 
 	public void run() {
@@ -38,7 +38,7 @@ public class ZombieGame {
 	}
 
 	private void selectRun() {
-		int run = ran.nextInt(2);
+		int run = ran.nextInt(11);
 		int move = input("1)앞으로 이동, 2) 종료");
 
 		if (move == MOVE) {
@@ -59,17 +59,17 @@ public class ZombieGame {
 						hero.recovery();
 					} else if (action == RUNNING) {
 
-						if (run == 1) {
-							System.out.println("50%의 확률로 도망에 성공하였습니다!");
+						if (run % 2 == 0) {
+							System.out.println("도망에 성공하였습니다!");
 							break;
-						} else if (run == 0) {
-							System.out.println("50%의 확률로 도망에 실패하였습니다...");
+						} else {
+							System.out.println("도망에 실패하였습니다...");
 							continue;
 						}
 					}
 
 					if (hero.getHp() <= 0) {
-						System.out.println("Hero는 죽었습니다.");
+						System.out.println("Hero가 전투불능 상태입니다!");
 						break;
 					}
 					if (zombie.getHp() <= 0) {
@@ -93,21 +93,31 @@ public class ZombieGame {
 						hero.recovery();
 					} else if (action == RUNNING) {
 
-						if (run == 1) {
-							System.out.println("50%의 확률로 도망에 성공하였습니다!");
+						if (run % 2 == 0) {
+							System.out.println("도망에 성공하였습니다!");
 							break;
-						} else if (run == 0) {
-							System.out.println("50%의 확률로 도망에 실패하였습니다...");
+						} else {
+							System.out.println("도망에 실패하였습니다...");
 							continue;
 						}
 					}
 
 					if (hero.getHp() <= 0) {
-						System.out.println("죽었습니다.");
+						System.out.println("Hero가 전투불능입니다!");
+						isRun = false;
 						break;
 					}
+					if (boss.getHp() <= 0) {
+						System.out.println("보스를 해치웠습니다!!");
+						break;
+					}
+
 				}
 
+			}
+			if (hero.getPos() == 10) {
+				System.out.println("목표 지점에 달성하였습니다! GAME CLEAR!!");
+				isRun = false;
 			}
 
 		} else if (move == EXIT) {

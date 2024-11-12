@@ -17,10 +17,10 @@ public class Boss extends Unit {
 	}
 
 	public void attack(Unit hero) {
-		int attackType = ran.nextInt(attack) + 1;
+		int attackType = ran.nextInt(2);
 		if (attackType == LETHAL) {
 			System.out.println("보스의 필살기 발동 2배의 공격력");
-			attack = 2 * (ran.nextInt(attack) + 1);
+			attack = 2 * (ran.nextInt(attack) + 5);
 			hero.setHp(hero.getHp() - attack);
 			if (hero.getHp() <= 0) {
 				hero.setHp(0);
@@ -29,7 +29,7 @@ public class Boss extends Unit {
 			System.out.println(info);
 		} else {
 			System.out.println("보스의 일반공격 ");
-			attack = ran.nextInt(attack) + 1;
+			attack = ran.nextInt(attack) + 5;
 			hero.setHp(hero.getHp() - attack);
 			if (hero.getHp() <= 0) {
 				hero.setHp(0);
