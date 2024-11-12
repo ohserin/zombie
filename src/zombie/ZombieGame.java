@@ -38,6 +38,7 @@ public class ZombieGame {
 	}
 
 	private void selectRun() {
+		int run = ran.nextInt(2);
 		int move = input("1)앞으로 이동, 2) 종료");
 
 		if (move == MOVE) {
@@ -58,7 +59,6 @@ public class ZombieGame {
 						hero.recovery();
 					} else if (action == RUNNING) {
 
-						int run = ran.nextInt(2);
 						if (run == 1) {
 							System.out.println("50%의 확률로 도망에 성공하였습니다!");
 							break;
@@ -91,6 +91,15 @@ public class ZombieGame {
 						hero.attack(boss);
 					} else if (action == HILL) {
 						hero.recovery();
+					} else if (action == RUNNING) {
+
+						if (run == 1) {
+							System.out.println("50%의 확률로 도망에 성공하였습니다!");
+							break;
+						} else if (run == 0) {
+							System.out.println("50%의 확률로 도망에 실패하였습니다...");
+							continue;
+						}
 					}
 
 					if (hero.getHp() <= 0) {
