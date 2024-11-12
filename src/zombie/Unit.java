@@ -2,7 +2,7 @@ package zombie;
 
 import java.util.Random;
 
-public class Unit {
+abstract public class Unit {
 	protected final int MAX_HP;
 	protected int hp;
 	protected int pos;
@@ -36,4 +36,6 @@ public class Unit {
 	public int getMAX_HP() {
 		return this.MAX_HP;
 	}
+	
+	abstract public void attack(Unit unit);
 }

@@ -1,6 +1,6 @@
 package zombie;
 
-public class Hero extends Unit implements Attackable, Recoverable {
+public class Hero extends Unit implements Recoverable {
 	private int count;
 
 	protected Hero(int hp, int pos, int attack) {
