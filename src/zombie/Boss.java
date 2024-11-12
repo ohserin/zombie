@@ -25,15 +25,17 @@ public class Boss extends Unit {
 			if (hero.getHp() <= 0) {
 				hero.setHp(0);
 			}
-			System.out.println("보스가 " + attack + "의 공격력으로 공격 :" + " 현재 Hero hp : " + hero.getHp());
+			String info = String.format("보스가 %d의 공격력으로 공격! 현재 Hero HP %d :", attack, hero.getHp());
+			System.out.println(info);
 		} else {
 			System.out.println("보스의 일반공격 ");
-			int power = ran.nextInt(4) + 1;
-			hero.setHp(hero.getHp() - power);
+			attack = ran.nextInt(4) + 1;
+			hero.setHp(hero.getHp() - attack);
 			if (hero.getHp() <= 0) {
 				hero.setHp(0);
 			}
-			System.out.println("보스가 " + power + "의 공격력으로 공격 :" + " 현재 Hero hp : " + hero.getHp());
+			String info = String.format("보스가 %d의 공격으로 공격 >>> 현재 Hero hp : %d", attack, hero.getHp());
+			System.out.println(info);
 		}
 	}
 
