@@ -1,5 +1,6 @@
 package zombie;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class ZombieGame {
@@ -18,7 +19,10 @@ public class ZombieGame {
 
 	private final int ATTACK = 1;
 	private final int HILL = 2;
+	private final int RUNNING = 3;
+
 	private Scanner scan = new Scanner(System.in);
+	private Random ran = new Random();
 	private boolean isRun = true;
 	private int pos = 1;
 
@@ -44,13 +48,24 @@ public class ZombieGame {
 				System.out.println("좀비를 만났습니다. 공격모드로 바뀝니다.");
 
 				while (true) {
-					int action = input("1)공격하기, 2) 포션마시기");
+					int action = input("1)공격하기, 2) 포션마시기, 3) 도망가기");
 
 					if (action == ATTACK) {
 						zombie.attack(hero);
 						hero.attack(zombie);
+
 					} else if (action == HILL) {
 						hero.recovery();
+					} else if (action == RUNNING) {
+
+						int run = ran.nextInt(2);
+						if (run == 1) {
+							System.out.println("50%의 확률로 도망에 성공하였습니다!");
+							break;
+						} else if (run == 0) {
+							System.out.println("50%의 확률로 도망에 실패하였습니다...");
+							continue;
+						}
 					}
 
 					if (hero.getHp() <= 0) {
@@ -69,7 +84,7 @@ public class ZombieGame {
 				System.out.println("보스를 만났습니다. 공격모드로 바뀝니다.");
 
 				while (true) {
-					int action = input("1)공격하기, 2) 포션마시기");
+					int action = input("1)공격하기, 2) 포션마시기, 3) 도망가기");
 
 					if (action == ATTACK) {
 						boss.attack(hero);
