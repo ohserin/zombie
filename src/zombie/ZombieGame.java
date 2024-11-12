@@ -17,14 +17,15 @@ public class ZombieGame {
 	private final int MOVE = 1;
 	private final int EXIT = 2;
 
-	private final int ATTACK = 2;
+	private final int ATTACK = 1;
 	private final int HILL = 2;
 	private Scanner scan = new Scanner(System.in);
 	private Random ran = new Random();
 	private boolean isRun = true;
 	private int pos = 1;
 
-	Hero hero = new Hero(1, 100, 2);
+	Hero hero = new Hero(220, 1, 5);
+    Boss boss = new Boss(300, 9, 10);
 
 	public void run() {
 		while (isRun) {
@@ -40,18 +41,22 @@ public class ZombieGame {
 			pos = pos + 1;
 			hero.setPos(pos);
 
-			int appeared = ran.nextInt(10) + 1;
-			if (hero.getPos() == appeared) {
-				System.out.println("좀비를 만났습니다. 공격모드로 바뀝니다.");
+			if (hero.getPos() == boss.getPos()) {
+				System.out.println("보스를 만났습니다. 공격모드로 바뀝니다.");
 
 				while (true) {
 					int action = input("1)공격하기, 2) 포션마시기");
 
 					if (action == ATTACK) {
-//						hero.attack()
+						boss.attack(hero);
+						hero.attack(boss);
 					} else if (action == HILL) {
-						System.out.println("마셨다???");
 						hero.recovery();
+					}
+					
+					if(hero.getHp() <= 0) {
+						System.out.println("죽었습니다.");
+						break;
 					}
 				}
 
