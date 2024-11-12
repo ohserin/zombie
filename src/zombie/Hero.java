@@ -15,12 +15,12 @@ public class Hero extends Unit implements Attackable, Recoverable {
 			Boss boss = (Boss) enemy;
 			attack = ran.nextInt(10) + 1;
 			if (boss.getShield() > 0) {
-				int r = boss.getShield() - attack;
-				if (r >= 0) {
+				int excessDamage  = boss.getShield() - attack;
+				if (excessDamage  >= 0) {
 					boss.setShield(boss.getShield() - attack);
 				} else {
 					boss.setShield(0);
-					boss.setHp(boss.getHp() - r);
+					boss.setHp(boss.getHp() - excessDamage);
 				}
 			} else {
 				boss.setHp(boss.getHp() - attack);

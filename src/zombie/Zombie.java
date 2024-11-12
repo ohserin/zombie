@@ -1,6 +1,6 @@
 package zombie;
 
-abstract public class Zombie extends Unit implements Attackable {
+public class Zombie extends Unit implements Attackable {
 
 	protected Zombie(int hp, int pos, int attack) {
 		super(hp, pos, attack);
