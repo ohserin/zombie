@@ -7,7 +7,7 @@ public class Zombie extends Unit implements Attackable {
 	}
 
 	public void attack(Unit hero) {
-		attack = ran.nextInt(4) + 1;
+		attack = ran.nextInt(attack) + 1;
 
 		hero.setHp(hero.getHp() - attack);
 		if (hero.getHp() <= 0) {

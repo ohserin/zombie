@@ -13,10 +13,10 @@ public class Hero extends Unit implements Attackable, Recoverable {
 
 		if (enemy instanceof Boss) {
 			Boss boss = (Boss) enemy;
-			attack = ran.nextInt(10) + 1;
+			attack = ran.nextInt(attack) + 1;
 			if (boss.getShield() > 0) {
-				int excessDamage  = boss.getShield() - attack;
-				if (excessDamage  >= 0) {
+				int excessDamage = boss.getShield() - attack;
+				if (excessDamage >= 0) {
 					boss.setShield(boss.getShield() - attack);
 				} else {
 					boss.setShield(0);
@@ -29,11 +29,11 @@ public class Hero extends Unit implements Attackable, Recoverable {
 			if (boss.getHp() <= 0) {
 				boss.setHp(0);
 			}
-			System.out.println(
-					"히어로가 " + attack + "의 공격력으로 공격 :" + " 현재 Boss hp : " + boss.getHp() + "현재 Boss Shield : " + boss.getShield());
+			System.out.println("히어로가 " + attack + "의 공격력으로 공격 :" + " 현재 Boss hp : " + boss.getHp() + "현재 Boss Shield : "
+					+ boss.getShield());
 		} else {
 
-			attack = ran.nextInt(10) + 1;
+			attack = ran.nextInt(attack) + 1;
 			enemy.setHp(enemy.getHp() - attack);
 			if (enemy.getHp() <= 0) {
 				enemy.setHp(0);
