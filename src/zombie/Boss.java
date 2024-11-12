@@ -2,7 +2,7 @@ package zombie;
 
 public class Boss extends Unit {
 	private int shield;
-	private final int LETHALl = 1;
+	private final int LETHAL = 1;
 
 	public int getShield() {
 		return shield;
@@ -18,14 +18,14 @@ public class Boss extends Unit {
 
 	public void attack(Unit hero) {
 		int attackType = ran.nextInt(attack) + 1;
-		if (attackType == LETHALl) {
+		if (attackType == LETHAL) {
 			System.out.println("보스의 필살기 발동 2배의 공격력");
 			attack = 2 * (ran.nextInt(attack) + 1);
 			hero.setHp(hero.getHp() - attack);
 			if (hero.getHp() <= 0) {
 				hero.setHp(0);
 			}
-			String info = String.format("보스가 %d의 공격력으로 공격! 현재 Hero HP %d :", attack, hero.getHp());
+			String info = String.format("보스가 %d의 공격력으로 공격!! >>> 현재 Hero hp : %d :", attack, hero.getHp());
 			System.out.println(info);
 		} else {
 			System.out.println("보스의 일반공격 ");
@@ -34,7 +34,7 @@ public class Boss extends Unit {
 			if (hero.getHp() <= 0) {
 				hero.setHp(0);
 			}
-			String info = String.format("보스가 %d의 공격으로 공격 >>> 현재 Hero hp : %d", attack, hero.getHp());
+			String info = String.format("보스가 %d의 공격으로 공격!! >>> 현재 Hero hp : %d", attack, hero.getHp());
 			System.out.println(info);
 		}
 	}

@@ -29,23 +29,27 @@ public class Hero extends Unit implements Attackable, Recoverable {
 			if (boss.getHp() <= 0) {
 				boss.setHp(0);
 			}
-			System.out.println("히어로가 " + attack + "의 공격력으로 공격 :" + " 현재 Boss hp : " + boss.getHp() + "현재 Boss Shield : "
-					+ boss.getShield());
+
+			String info = String.format("Hero가 %d의 공격력으로 공격!! >>> 현재 Boss hp : %d 현재 보스 방어력 : %d", attack, boss.getHp(),
+					boss.getShield());
+			System.out.println(info);
 		} else {
+			
 
 			attack = ran.nextInt(attack) + 1;
 			enemy.setHp(enemy.getHp() - attack);
 			if (enemy.getHp() <= 0) {
 				enemy.setHp(0);
 			}
-			System.out.println("히어로가 " + attack + "의 공격력으로 공격 :" + " 현재 Zombie hp : " + enemy.getHp());
+			String info = String.format("Hero가 %d의 공격력으로 공격!! >>> 현재 Zombie hp : %d", attack,enemy.getHp());
+			System.out.println(info);
 		}
 	}
 
 	public void recovery() {
 		if (count > 0) {
 			setHp(getHp() + 200);
-			System.out.println("체력 회복해서 " + getHp() + "가 되었습니다.");
+			System.out.println(String.format("hp가 %d로 상승하였습니다.", getHp()));
 			count -= 1;
 		} else {
 			System.out.println("모두 사용했습니다.");
